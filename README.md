@@ -1,143 +1,173 @@
-Zahler Automated Testing Framework (Java + Selenium + TestNG)
+# Zahler Automated Testing Framework
 
-This repository contains a complete UI automation framework built for validating core user flows in the Zahler bookkeeping application.
-It demonstrates real-world test automation skills using Selenium WebDriver, Java, TestNG, and the Page Object Model (POM) design pattern.
+### Java + Selenium WebDriver + TestNG \| Page Object Model (POM)
 
-This framework was created as part of real QA automation work and is structured to reflect industry best practices.
+![Java](https://img.shields.io/badge/Java-17-orange)
+![Selenium](https://img.shields.io/badge/Selenium-4.21.0-brightgreen)
+![TestNG](https://img.shields.io/badge/TestNG-7.10-blue)
+![Maven](https://img.shields.io/badge/Maven-Build%20Tool-red)
+![Platform](https://img.shields.io/badge/OS-Windows%20%7C%20macOS%20%7C%20Linux-blue)
+![Status](https://img.shields.io/badge/Project-Active-success)
 
-📚 Table of Contents
+This automation framework was created during the **first work experience
+opportunity I received as a Junior QA Tester**.\
+It helped me understand how a real QA automation project is structured
+and how to write automated test cases using **Java**, **Selenium
+WebDriver**, and **TestNG**.
 
-Introduction
+------------------------------------------------------------------------
 
-Framework Features
+## 📑 Table of Contents
 
-Technologies Used
+-   Introduction\
+-   Project Structure\
+-   Technologies Used\
+-   Setup Instructions (Windows / macOS / Linux)\
+-   How to Run Tests\
+-   Test Suites\
+-   Screenshot\
+-   Notes
 
-Project Structure
+------------------------------------------------------------------------
 
-Test Execution
+## 🔹 Introduction
 
-Test Suites
+This project includes automated end-to-end scenarios such as:
 
-Configuration
+-   Login & Logout\
+-   Register New User\
+-   Forgot Password Flow\
+-   Creating Bookkeeping Transactions
 
-Notes
+Since this was my **first hands-on QA experience**, I focused on:
 
-📌 1. Introduction
+-   writing simple and clear test cases\
+-   structuring tests correctly\
+-   learning how to use TestNG suites\
+-   following Page Object Model principles
 
-The purpose of this project is to automate the most important end-to-end scenarios of the Zahler bookkeeping web application:
+------------------------------------------------------------------------
 
-Login & Logout
+## 📁 Project Structure
 
-User Registration
+    Zahler-Automation-Framework/
+    │
+    ├── src/
+    │   ├── Base/
+    │   │    └── BaseT.java
+    │   │
+    │   ├── Functional_TC/
+    │   │    └── Create_Transaction.java
+    │   │
+    │   ├── main.resources.config/
+    │   │    └── ConfigReader.java
+    │   │
+    │   ├── PageObject/
+    │   │
+    │   ├── Properties/
+    │   │
+    │   ├── Test.Forgot_Pass_TC/
+    │   │    └── Forgot_password.java
+    │   │
+    │   ├── Test.User_TC/
+    │        ├── Login_LogOut.java
+    │        └── Register_New_User.java
+    │
+    ├── Regression.xml
+    ├── testng.xml
+    ├── pom.xml
+    └── README.md
 
-Forgot Password flow
+------------------------------------------------------------------------
 
-Creating bookkeeping transactions
+## 🧰 Technologies Used
 
-The test suite uses TestNG, POM, and a centralized Base Test class for cleaner, maintainable, and scalable test automation.
+  Tool                     Purpose
+  ------------------------ ----------------------------
+  **Java 17**              Programming language
+  **Selenium WebDriver**   Browser automation
+  **TestNG**               Test execution & structure
+  **Maven**                Build tool
+  **Eclipse IDE**          Development
 
-🔥 2. Framework Features
+------------------------------------------------------------------------
 
-✔ Selenium WebDriver automation
+## ⚙️ Setup Instructions (Windows / macOS / Linux)
 
-✔ TestNG for test management & reports
+### 1️⃣ Install Java 17+
 
-✔ Page Object Model (POM) structure
+``` bash
+java -version
+```
 
-✔ Reusable BaseT class for setup/teardown
+### 2️⃣ Install Maven
 
-✔ Config-driven credentials
+``` bash
+mvn -version
+```
 
-✔ Regression suite included
+### 3️⃣ Update Config File
 
-✔ Clean package separation for clarity
+    baseUrl=
+    browser=chrome
+    timeout=10
 
-🛠 3. Technologies Used
-Component	Technology
-Language	Java 17+
-Automation	Selenium WebDriver
-Test Framework	TestNG
-Build Tool	Maven
-Browser	Chrome
-Pattern	Page Object Model
-📂 4. Project Structure (matches your real folder layout)
-src/
- ├── Base/
- │     └── BaseT.java                → WebDriver setup, teardown, config load
- │
- ├── PageObject/                     → Page Object Model
- │     ├── LoginPage.java
- │     ├── RegisterPage.java
- │     ├── ForgotPasswordPage.java
- │     └── CreateTransactionPage.java
- │
- ├── Test.User_TC/                   → User flow test cases
- │     ├── Login_LogOut.java
- │     └── Register_New_User.java
- │
- ├── Test.Forgot_Pass_TC/            → Password reset tests
- │     └── Forgot_password.java
- │
- ├── Functional_TC/                  → Financial transaction flow
- │     └── Create_Transaction.java
- │
- └── main.resources.config/          → Configuration utilities
-       ├── ConfigReader.java
-       └── config.properties         → Test data (safe, fake credentials)
+------------------------------------------------------------------------
 
-▶️ 5. How to Run the Tests
-Run regression suite using TestNG:
+## ▶️ How to Run Tests
 
-Right-click Regression.xml
+``` bash
+mvn test
+```
 
-Choose Run As → TestNG Suite
+Run suite:
 
-Run tests with Maven:
-mvn clean test -Dsuite=Regression.xml
+``` bash
+mvn test -DsuiteXmlFile=testng.xml
+```
 
-Run a single test:
+Run Regression:
 
-Right-click the test class →
-Run As → TestNG Test
+``` bash
+mvn test -DsuiteXmlFile=Regression.xml
+```
 
-🧪 6. Test Suites
-✔ Regression.xml
+Run single test:
 
-Includes:
+``` bash
+mvn -Dtest=Login_LogOut test
+```
 
-Login / Logout
+------------------------------------------------------------------------
 
-Registration
+## 📦 Test Suites Example
 
-Forgot Password
+``` xml
+<suite name="Zahler Automation Suite">
+    <test name="User Tests">
+        <classes>
+            <class name="Test.User_TC.Login_LogOut"/>
+            <class name="Test.User_TC.Register_New_User"/>
+        </classes>
+    </test>
+</suite>
+```
 
-Create Transaction
-
-This suite tests all major flows of the application.
-
-⚙️ 7. Configuration
-
-The framework reads values from:
-
-main.resources.config/config.properties
+------------------------------------------------------------------------
 
 
-Example:
+------------------------------------------------------------------------
 
-baseUrl=https://zahler-test.randomolo.co.uk
-email=test.user@example.com
-password=Password123!
+## 📝 Notes
 
+This was the **first real QA work experience** I received.\
+It helped me learn:
 
-✔ Only fake test accounts
-✔ No sensitive credentials
-✔ Safe for public GitHub repositories
+-   how automation frameworks are structured\
+-   how to organize test cases\
+-   how to use Selenium WebDriver\
+-   how TestNG suites work\
+-   how to follow POM\
+-   how to run cross‑platform tests
 
-📝 8. Notes
-
-This project was built as part of real QA automation work.
-
-Credentials included are NOT production data.
-
-The project demonstrates junior-to-mid level automation skills used in modern software teams.
+More improvements will be added when the project will be back on production
