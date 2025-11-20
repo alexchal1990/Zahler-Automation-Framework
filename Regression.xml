@@ -1,0 +1,28 @@
+
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Zahler Regression Suite" verbose="2" parallel="false">
+
+    <test name="Full Regression Test Set">
+        <classes>
+
+            <!-- Login / Logout Tests -->
+            <class name="tests.LoginTest"/>
+
+            <!-- Registration -->
+            <class name="tests.RegisterTest"/>
+
+            <!-- Forgot Password -->
+            <class name="tests.ForgotPasswordTest"/>
+
+            <!-- Transactions -->
+            <class name="tests.CreateTransactionTest"/>
+            
+              <!-- Create Transaction (Important!) -->
+            <class name="tests.CreateTransactionTest"/>
+
+
+        </classes>
+    </test>
+
+</suite>

@@ -1,0 +1,38 @@
+# Maven target folder
+target/
+
+# TestNG output
+test-output/
+
+# Eclipse files
+.project
+.classpath
+.settings/
+
+# IntelliJ files
+.idea/
+*.iml
+
+# VSCode files
+.vscode/
+
+# macOS files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Screenshots (if you generate them)
+screenshots/
+
+
+# Java
+*.class
+
+# Temporary files
+*.tmp
+*.swp
